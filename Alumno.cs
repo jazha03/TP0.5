@@ -2,13 +2,14 @@ namespace TP0._5
 
 Public class Alumno{}
 {
-    private int dni;
-    private string nombre;
-    private double faltas;
+    public int dni;
+    public string nombre;
+    public double faltas;
 
-    public Alum (int dni, string nombre, double faltas)
+    public void mostrarInfo()
     {
-        dni
+        Console.WriteLine("Nombre: " + this.nombre);
+        Console.WriteLine("DNI: " + this.dni);
+        Console.WriteLine("Faltas: "+ this.faltas);
     }
-
 }

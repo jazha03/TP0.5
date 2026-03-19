@@ -1,17 +1,42 @@
 namespace TP0._5
 
-public class Curso{
-{
-    private int alum;
+public class Curso
+ private int alum;
     private int alumDni;
     private string alumInfo;
     List<int> listAlum = new List<int>
 
-    private int buscarAlumno(int dni, string nombre, double faltas)
+    private bool agregarAlum(int dni, string nombre, double faltas)
     {
-        int alumnoBuscadoD = 0;
-        Console.WriteLine("ingrese dni del alumno que quiere buscar");
-        alumnoBuscadoD = int.Parse(Console.ReadLine(alumDni));
-        alumnoBuscadoD = alumDni;
+        Alumno i  = this.buscarAlumno(nombre)
+        bool agregado = false;
+        if (i == null){
+            alumno nuevo = new alumno(dni, nombre, faltas);
+            this.listAlum.Add(nuevo)
+            agregado = true;
+        }
+        return agregado;
     }
-}
+
+    private Alumno buscarAlumno(int dni)
+    {
+        int i = 0;
+        Alumno encontrado = null;
+        while ( i < this.listAlum && !this.listAlum[i].esMismoDni(dni))
+        {
+            i++;
+        }
+        if (i <this.listAlum.Count)
+        {
+            encontrado = this.listAlum[i];
+        }
+        return encontrado;
+    }
+
+    private string mostrarAlumnos(string nombre, double faltas)
+    {
+       foreach (Alumno i in listAlum)
+       {
+        i.mostrarInfo();
+       }
+    }
