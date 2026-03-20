@@ -1,0 +1,5 @@
+Z:\2026pro\prog\TP0.5\obj\Debug\net9.0\TP0.5.GeneratedMSBuildEditorConfig.editorconfig
+Z:\2026pro\prog\TP0.5\obj\Debug\net9.0\TP0.5.AssemblyInfoInputs.cache
+Z:\2026pro\prog\TP0.5\obj\Debug\net9.0\TP0.5.AssemblyInfo.cs
+Z:\2026pro\prog\TP0.5\obj\Debug\net9.0\TP0.5.csproj.CoreCompileInputs.cache
+Z:\2026pro\prog\TP0.5\obj\Debug\net9.0\TP0.5.sourcelink.json

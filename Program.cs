@@ -1,93 +1,110 @@
 ﻿namespace TP0._5;
 
-class Program
+public class Program 
 {       
-       List<string> list = new List<string> {"Agregar Alumno", "Buscar alumno con DNI", "Agregar falta", "Mostrar a los alumnos",  "Mostrar alumnos con + de 15 faltas"}
-       Menu menu = new Menu();
+    static void Main(string[] args)
+    {
 
-       int opcion;
-       do 
-       {
-        Console.Clear();
-        opcion = menu.pedirOpcion(list.Count);
-        switch(opcion)
+        Curso curso = new Curso();
+        int opcion;
+        do
         {
-            case 1:
-            agregarAlum(curso)
-            break;
+            Console.WriteLine("1. Agregar Alumno");
+            Console.WriteLine("2. Buscar alumno con DNI");
+            Console.WriteLine("3. Agregar falta");
+            Console.WriteLine("4. Mostrar alumnos");
+            Console.WriteLine("5. Mostrar alumnos libres");
+            Console.WriteLine("6. Salir");
 
-            case 2:
-            buscarAlumno(curso)
-            break;
+            opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    agregarAlumno(curso);
+                    break;
+
+                case 2:
+                    buscarAlumno(curso);
+                    break;
+
+                case 3:
+                    agregarFalta(curso);
+                    break;
+
+                case 4:
+                    mostrarAlumnos(curso);
+                    break;
+
+                case 5:
+                    mostrarAlumnosLibres(curso);
+                    break;
+                case 6:
+                break;
+
+            }
+
+        } while (opcion != 0);
+       
+       static void agregarAlumno(Curso curso)
+        {
+            Console.Write("DNI: ");
+            int dni = int.Parse(Console.ReadLine());
+
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine();
+
+            if (curso.AgregarAlum(dni, nombre))
+            {
+                Console.WriteLine("Alumno agregado");
+            }
+            else
+            {
+               Console.WriteLine("Ya existe");
+            }
         }
 
-       }
+        static void buscarAlumno(Curso curso)
+        {
+            Console.Write("DNI: ");
+            int dni = int.Parse(Console.ReadLine());
+            Alumno a = curso.buscarAlumno(dni);
+            if (a != null)
+            {
+                a.MostrarInfo();
+            }
+            else
+            {
+                Console.WriteLine("No encontrado");
+            }
+        }
 
-}
+        static void agregarFalta(Curso curso)
+        {
+            Console.Write("DNI: ");
+            int dni = int.Parse(Console.ReadLine());
 
-static void buscarAlumno(curso curso)
-{
-    
-}
+            Alumno a = curso.buscarAlumno(dni);
 
-static void agregarAlum (Curso Curso)
-{
-    int dni = ingresarNumero("DNI: ");
-    string nombre = ingresarTexto("Nombre: ");
-    double faltas = ingresarDouble("Faltas: ")
+            if (a != null)
+            {
+                Console.Write("1.Falta completa  2.Media falta: ");
+                int tipo = int.Parse(Console.ReadLine());
 
-    if(curso.agregarAlum(dni, nombre, faltas))
-    {
-        Console.WriteLine("Se agregó el alumno.")
+                if (tipo == 1)
+                {
+                    a.AgregarFalta(1);
+                }
+                else
+                {
+                    a.AgregarFalta(0.5);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Alumno no encontrado");
+            }
+        }
+
     }
-    else
-    {
-        Console.WriteLine("Ya existe un alumno con ese nombre.")
-    }
-
-}
-
-
-
-
-
-static string ingresarTexto(string mensaje)
-{
-    string texto = "";
-    while (texto == "")
-    {
-        Console.WriteLine(Mensaje);
-        texto = Console.ReadLine();
-    }
-    return texto;
-}
-
-static int ingresarNumero(string mensaje)
-{
-    int num = 0;
-    bool pude;
-    do
-    {
-        Console.WriteLine(mensaje);
-        pude = int.TryParse(Console.ReadLine(), out num);
-        if (!pude)
-            Console.WriteLine("Ingresá un número");
-    }
-    while (!pude);
-    return num;
-}
-
-static int ingresarDouble(string mensaje)
-{
-    double num = 0;
-    bool pude;
-    do
-    {
-        Console.WriteLine(mensaje);
-        pude = double.TryParse(Console.ReadLine(), out num);
-        if (!pude)
-            Console.WriteLine("Ingresá un número");
-    }
-    while (!pude);
-    return num;
 }

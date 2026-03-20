@@ -1,42 +1,52 @@
 namespace TP0._5
+{
+public class Curso 
+{
+    private List<Alumno> listaAlumnos = new List<Alumno>();
 
-public class Curso
- private int alum;
-    private int alumDni;
-    private string alumInfo;
-    List<int> listAlum = new List<int>
-
-    private bool agregarAlum(int dni, string nombre, double faltas)
+     public bool agregarAlumno(int dni, string nombre)
     {
-        Alumno i  = this.buscarAlumno(nombre)
-        bool agregado = false;
-        if (i == null){
-            alumno nuevo = new alumno(dni, nombre, faltas);
-            this.listAlum.Add(nuevo)
-            agregado = true;
-        }
-        return agregado;
-    }
+        Alumno existente = buscarAlumno(dni);
 
-    private Alumno buscarAlumno(int dni)
-    {
-        int i = 0;
-        Alumno encontrado = null;
-        while ( i < this.listAlum && !this.listAlum[i].esMismoDni(dni))
+        if (existente == null)
         {
-            i++;
+            Alumno nuevo = new Alumno(dni, nombre);
+            listaAlumnos.Add(nuevo);
+            return true;
         }
-        if (i <this.listAlum.Count)
-        {
-            encontrado = this.listAlum[i];
-        }
-        return encontrado;
+        return false;
     }
 
-    private string mostrarAlumnos(string nombre, double faltas)
+   public Alumno buscarAlumno(int dni)
     {
-       foreach (Alumno i in listAlum)
-       {
-        i.mostrarInfo();
-       }
+        foreach (Alumno a in listaAlumnos)
+        {
+            if (a.getDni() == dni)
+            {
+                return a;
+            }
+        }
+        return null;
     }
+
+     public void mostrarAlumnos()
+    {
+        foreach (Alumno a in listaAlumnos)
+        {
+            a.mostrarInfo();
+        }
+    }
+
+    public void mostrarAlumnosLibres()
+    {
+        foreach (Alumno a in listaAlumnos)
+        {
+            if (a.getFaltas() > 15)
+            {
+                a.mostrarInfo();
+            }
+        }
+    }
+}
+}
+
