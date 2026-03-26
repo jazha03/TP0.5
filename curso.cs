@@ -4,44 +4,41 @@ public class Curso
 {
    Dictionary<int, Alumno> dicAlumno = new Dictionary<int, Alumno>();
 
-    public void agregarAlumno(int dni, string nombre)
-    {
-        Alumno nuevoAlumno = new Alumno(dni, nombre);
-        dicAlumno.Add(dni, nuevoAlumno);
-    }
-
-   public Alumno buscarAlumno(int dni)
-    {
-        foreach (Alumno a in dicAlumno)
+    public bool AgregarAlumno(int dni, string nombre)
         {
-            if (a.getDni() == dni)
+            if (dicAlumno.ContainsKey(dni))
+                return false;
+
+            dicAlumno.Add(dni, new Alumno(dni, nombre));
+            return true;
+        }
+
+    public Alumno BuscarAlumno(int dni)
+        {
+            if (dicAlumno.ContainsKey(dni))
+                return dicAlumno[dni];
+
+            return null;
+        }
+
+    public void MostrarAlumnos()
+        {
+            foreach (var item in dicAlumno.Values)
             {
-                return a;
+                item.MostrarInfo();
             }
         }
-        return null;
-    }
 
-     public void mostrarAlumnos()
-    {
-        foreach (Alumno a in dicAlumno)
+    public void MostrarAlumnosLibres()
         {
-            a.mostrarInfo();
-        }
-        return a;
-    }
-
-    public void mostrarAlumnosLibres()
-    {
-        foreach (Alumno a in dicAlumno)
-        {
-            if (a.getFaltas() > 15)
+            foreach (var item in dicAlumno.Values)
             {
-                a.mostrarInfo();
+                if (item.GetFaltas() > 15)
+                {
+                    item.MostrarInfo();
+                }
             }
         }
-        return a;
-    }
 }
 }
 
