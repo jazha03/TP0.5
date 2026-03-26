@@ -3,22 +3,16 @@ namespace TP0._5{
 public class Alumno
 {
     public string nombre;
+    public int dni;
     public double faltas;
-
-    Dictionary<int, Alumno> dicAlumno = new Dictionary<int, Alumno>();
 
     public Alumno(int dni, string nombre)
     {
         this.nombre = nombre;
+        this.dni = dni;
         this.faltas = 0;
     }
 
-    foreach(int clave in dicAlumno.Keys)
-    {
-        Console.WriteLine(clave);
-        Console.WriteLine(dicAlumnos[clave]);
-    }
-    
     public void mostrarInfo()
     {
         Console.WriteLine("Nombre: " + nombre);

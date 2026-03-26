@@ -54,7 +54,7 @@ public class Program
             Console.Write("Nombre: ");
             string nombre = Console.ReadLine();
 
-            if (curso.AgregarAlum(dni, nombre))
+            if (curso.AgregarAlumno(dni, nombre))
             {
                 Console.WriteLine("Alumno agregado");
             }
@@ -78,6 +78,7 @@ public class Program
                 Console.WriteLine("No encontrado");
             }
         }
+
 
         static void agregarFalta(Curso curso)
         {
