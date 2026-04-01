@@ -33,18 +33,18 @@ public class Program
                     break;
 
                 case 4:
-                    mostrarAlumnos(curso);
+                    curso.mostrarAlumnos();
                     break;
 
                 case 5:
-                    mostrarAlumnosLibres(curso);
+                    curso.mostrarAlumnosLibres();
                     break;
                 case 6:
                 break;
 
             }
 
-        } while (opcion != 0);
+        } while (opcion != 6);
        
        static void agregarAlumno(Curso curso)
         {
@@ -94,11 +94,11 @@ public class Program
 
                 if (tipo == 1)
                 {
-                    a.AgregarFalta(1);
+                    a.agregarFalta(1);
                 }
                 else
                 {
-                    a.AgregarFalta(0.5);
+                    a.agregarFalta(0.5);
                 }
             }
             else

@@ -4,7 +4,7 @@ public class Curso
 {
    Dictionary<int, Alumno> dicAlumno = new Dictionary<int, Alumno>();
 
-    public bool AgregarAlumno(int dni, string nombre)
+    public bool agregarAlumno(int dni, string nombre)
         {
             if (dicAlumno.ContainsKey(dni))
                 return false;
@@ -13,7 +13,7 @@ public class Curso
             return true;
         }
 
-    public Alumno BuscarAlumno(int dni)
+    public Alumno buscarAlumno(int dni)
         {
             if (dicAlumno.ContainsKey(dni))
                 return dicAlumno[dni];
@@ -21,7 +21,7 @@ public class Curso
             return null;
         }
 
-    public void MostrarAlumnos()
+    public void mostrarAlumnos()
         {
             foreach (var item in dicAlumno.Values)
             {
@@ -29,7 +29,7 @@ public class Curso
             }
         }
 
-    public void MostrarAlumnosLibres()
+    public void mostrarAlumnosLibres()
         {
             foreach (var item in dicAlumno.Values)
             {
